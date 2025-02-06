@@ -14,7 +14,6 @@ public class RootController {
     public void root(final HttpServletResponse response) throws IOException {
         response.sendRedirect("/swagger-ui.html");
     }
-
     @GetMapping("/hello-world")
     public String helloWorld(@RequestParam String name) {
         return "Hello " + name;
