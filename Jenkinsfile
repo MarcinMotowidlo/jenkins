@@ -1,6 +1,12 @@
 pipeline {
     agent any
 
+    parameters {
+        string(name: 'DOCKER_IMAGE', defaultValue: 'jenkins-demo', description: 'Docker image name')
+        string(name: 'DOCKER_USERNAME', defaultValue: 'xxx', description: 'Tag of docker image')
+        string(name: 'DOCKER_TAG', defaultValue: 'latest', description: 'Tag of docker image')
+    }
+
     tools {
         maven 'maven-3-3-9'
     }
@@ -33,6 +39,14 @@ pipeline {
                 }
             }
         }
+
+        stage('Docker Build') {
+            agent any
+            steps {
+                sh "docker build -t ${params.DOCKER_USERNAME}/${params.DOCKER_IMAGE}:${params.DOCKER_TAG} ."
+                }
+            }
+
 
         stage('Deploy') {
             steps {
