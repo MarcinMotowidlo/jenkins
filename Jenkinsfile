@@ -14,7 +14,7 @@ pipeline {
     environment {
             NEXUS_VERSION = "nexus3"
             NEXUS_PROTOCOL = "http"
-            NEXUS_URL = "localhost:8081"
+            NEXUS_URL = "localhost:8081/nexus/content/repositories"
             NEXUS_REPOSITORY = "maven-nexus-repo"
             NEXUS_CREDENTIAL_ID = "jenkins-nexus-user"
     }
